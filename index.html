@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +97,7 @@
         .product-actions { margin-top: 14px; display: flex; gap: 8px; }
         .product-actions button { padding: 10px 5px; font-size: 0.9rem; flex: 1; }
 
-        /* --- PRODUCT DETAIL MODAL --- */
+        /* --- PRODUCT DETAIL MODAL (Gallery & Size Options) --- */
         .product-detail-flex { display: flex; gap: 30px; }
         .product-detail-left { flex: 1; display: flex; flex-direction: column; gap: 10px; }
         .product-main-img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid #eaeaea; }
@@ -195,29 +196,25 @@
             .icon-btn { font-size: 1.15rem; }
             .cart-count { font-size: 0.65rem; padding: 2px 6px; top: -5px; right: -6px; }
             
-            /* HERO BANNER FIX: Shows 100% image perfectly uncropped, text box right below it */
+            /* HERO BANNER FIX: Shows 100% image perfectly uncropped, text box right below it seamlessly */
             .hero { 
                 min-height: auto; 
                 background-position: top center; 
-                background-size: 100% auto; /* Shows image without cropping */
+                background-size: 100% auto; 
                 background-repeat: no-repeat;
-                background-color: var(--bg-base); /* Fills the rest of the space */
-                padding: 65vw 5% 40px 5%; /* Pushes the box precisely below the image */
+                background-color: transparent; 
+                padding: 65vw 5% 40px 5%; /* Pushes content completely below the image */
                 align-items: flex-start; 
                 display: block; 
             }
             .hero-content-box { 
                 max-width: 100%; 
-                padding: 30px 20px; 
+                padding: 20px 10px; 
                 text-align: center; 
-                background: #FFFFFF; 
-                margin-top: -20px; /* Slight overlap effect */
-                position: relative;
-                z-index: 2;
-                border-radius: 16px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-                border: 1px solid rgba(212, 175, 55, 0.2);
-                backdrop-filter: none; /* Removed blur to look clean white */
+                background: transparent; /* Makes the box disappear into the beige background */
+                margin-top: 0; 
+                box-shadow: none; 
+                border: none; 
             }
             .hero-content-box h1 { font-size: 2.2rem; margin-bottom: 10px; text-shadow: none;}
             .hero-content-box p { font-size: 0.95rem; margin-bottom: 20px; }
@@ -432,7 +429,7 @@
         const SHOP_PHONE = "+91 9000000000";
         const SHOP_ADDRESS = "Visnagar, Gujarat, India";
 
-        // Category Array restored with all 4 items
+        // Category Array
         const categories = [
             { name: "Burkha", img: "https://placehold.co/400x400/EBE1D1/0A2540?text=Burkha" },
             { name: "Hijab", img: "https://placehold.co/400x400/EBE1D1/0A2540?text=Hijab" },
@@ -440,7 +437,7 @@
             { name: "Accessories", img: "https://placehold.co/400x400/EBE1D1/0A2540?text=Pins" }
         ];
 
-        // All 8 Products restored, each with Multiple Images, Colors, Sizes and Descriptions
+        // All 8 Products
         const products = [
             { 
                 id: 1, name: "Premium Classic Abaya", category: "Burkha", price: 1499, oldPrice: 1899, discount: "20% OFF", 
