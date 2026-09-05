@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summy Hijab Selection | Modest Luxury</title>
-    <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -97,7 +96,7 @@
         .product-actions { margin-top: 14px; display: flex; gap: 8px; }
         .product-actions button { padding: 10px 5px; font-size: 0.9rem; flex: 1; }
 
-        /* --- PRODUCT DETAIL MODAL (Gallery & Size Options) --- */
+        /* --- PRODUCT DETAIL MODAL --- */
         .product-detail-flex { display: flex; gap: 30px; }
         .product-detail-left { flex: 1; display: flex; flex-direction: column; gap: 10px; }
         .product-main-img { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid #eaeaea; }
@@ -185,7 +184,7 @@
         .pay-badge.paytm { border-bottom: 2px solid #00b9f1; }
 
         /* =========================================
-           RESPONSIVE (MOBILE FIXES) 
+           RESPONSIVE (MOBILE FIXES) - 100% FIXED
            ========================================= */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -196,10 +195,32 @@
             .icon-btn { font-size: 1.15rem; }
             .cart-count { font-size: 0.65rem; padding: 2px 6px; top: -5px; right: -6px; }
             
-            .hero { min-height: 80vh; background-position: center top; padding: 55% 5% 5% 5%; align-items: flex-end; justify-content: center; }
-            .hero-content-box { max-width: 100%; padding: 20px 15px; text-align: center; background: rgba(248, 244, 236, 0.85); backdrop-filter: blur(12px); margin-top: 0; }
-            .hero-content-box h1 { font-size: 2rem; margin-bottom: 8px; }
-            .hero-content-box p { font-size: 0.9rem; margin-bottom: 15px; }
+            /* HERO BANNER FIX: Shows 100% image perfectly uncropped, text box right below it */
+            .hero { 
+                min-height: auto; 
+                background-position: top center; 
+                background-size: 100% auto; /* Shows image without cropping */
+                background-repeat: no-repeat;
+                background-color: var(--bg-base); /* Fills the rest of the space */
+                padding: 65vw 5% 40px 5%; /* Pushes the box precisely below the image */
+                align-items: flex-start; 
+                display: block; 
+            }
+            .hero-content-box { 
+                max-width: 100%; 
+                padding: 30px 20px; 
+                text-align: center; 
+                background: #FFFFFF; 
+                margin-top: -20px; /* Slight overlap effect */
+                position: relative;
+                z-index: 2;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                backdrop-filter: none; /* Removed blur to look clean white */
+            }
+            .hero-content-box h1 { font-size: 2.2rem; margin-bottom: 10px; text-shadow: none;}
+            .hero-content-box p { font-size: 0.95rem; margin-bottom: 20px; }
             .hero-content-box .btn-primary { padding: 12px 25px; font-size: 1rem; }
             
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -252,7 +273,6 @@
             </div>
         </section>
 
-        <!-- Category Section Restored with all 4 items -->
         <section id="categories" class="py-5">
             <div class="container">
                 <h2 class="section-title">Shop by Category</h2>
@@ -265,7 +285,6 @@
             <div class="container">
                 <h2 class="section-title">Featured Products</h2>
                 <p class="section-subtitle">Explore Our Latest Arrivals</p>
-                <!-- Filters Restored -->
                 <div class="filters" id="filter-container">
                     <button class="filter-btn active" onclick="filterProducts('All')">All</button>
                     <button class="filter-btn" onclick="filterProducts('Burkha')">Burkha</button>
@@ -277,7 +296,6 @@
             </div>
         </section>
 
-        <!-- Features Section Restored -->
         <section class="features py-5">
             <div class="container">
                 <h2 class="section-title" style="color:var(--white);">Why Choose Us</h2>
@@ -291,7 +309,6 @@
             </div>
         </section>
 
-        <!-- About Us Section Restored -->
         <section id="about" class="py-5 container about-section">
             <div class="about-card">
                 <h2 class="section-title">About Our Shop</h2>
@@ -301,7 +318,6 @@
         </section>
     </main>
 
-    <!-- Footer Restored completely with Quick Links and Payment Icons -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -336,7 +352,6 @@
         </div>
     </footer>
 
-    <!-- PRODUCT DETAIL MODAL -->
     <div class="modal-overlay" id="product-modal">
         <div class="modal-content large">
             <button class="close-modal" onclick="closeProductModal()">×</button>
@@ -344,7 +359,6 @@
         </div>
     </div>
 
-    <!-- CART & CHECKOUT MODAL -->
     <div class="modal-overlay" id="cart-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeCart()">×</button>
@@ -390,7 +404,6 @@
                 <button class="btn-outline" style="width:100%; margin-top:12px;" onclick="showCart()">Back to Cart</button>
             </div>
 
-            <!-- UPI Payment Screen -->
             <div id="upi-view" style="display:none; text-align:center;">
                 <h3 style="font-family:'Playfair Display'; font-size: 1.6rem; color: var(--primary);">Scan to Pay</h3>
                 <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">Please scan the QR code below using GPay, Paytm, or PhonePe to pay <strong id="upi-amount" style="color:var(--primary); font-size:1.1rem;">₹0</strong></p>
@@ -405,13 +418,10 @@
         </div>
     </div>
 
-    <!-- WISHLIST MODAL -->
     <div class="modal-overlay" id="wishlist-modal"><div class="modal-content"><button class="close-modal" onclick="closeWishlistModal()">×</button><h3 style="font-family:'Playfair Display'; font-size: 1.6rem; color: var(--primary);">Your Wishlist ❤️</h3><div id="wishlist-items" style="margin-top: 15px;"></div></div></div>
 
-    <!-- MY ORDERS MODAL -->
     <div class="modal-overlay" id="orders-modal"><div class="modal-content"><button class="close-modal" onclick="closeOrdersModal()">×</button><h3 style="font-family:'Playfair Display'; font-size: 1.6rem; color: var(--primary);">My Orders 📦</h3><p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 20px;">Your recent orders are saved here.</p><div id="orders-items"></div></div></div>
 
-    <!-- INFO MODAL -->
     <div class="modal-overlay" id="info-modal"><div class="modal-content"><button class="close-modal" onclick="closeInfoModal()">×</button><h3 id="info-modal-title" style="font-family:'Playfair Display'; font-size: 1.8rem; color: var(--primary); margin-bottom: 15px;">Title</h3><div id="info-modal-body" style="color:var(--text-muted); font-size:1rem; line-height:1.7;"></div></div></div>
 
     <div class="toast" id="toast">Action Successful!</div>
@@ -601,8 +611,6 @@
             });
 
             let colorHTML = '';
-
-            
             if(currentProduct.colors) {
                 colorHTML = `<div class="options-title">Select Color:</div><div class="options-container">`;
                 currentProduct.colors.forEach(color => {
